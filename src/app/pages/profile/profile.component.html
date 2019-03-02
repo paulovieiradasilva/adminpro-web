@@ -1,0 +1,61 @@
+<div class="row animated fadeIn">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+
+        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20">
+          <div class="form-group">
+            <h4 class="card-title">Dados do Usuário</h4>
+            <h6 class="card-subtitle">perfil</h6>
+            <hr>
+
+            <label for="exampleInputuname">Nome</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="ti-user"></i>
+              </div>
+              <input [ngModel]="usuario?.nombre" type="text" name="nombre" class="form-control" required placeholder="Username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="ti-email"></i>
+              </div>
+              <input [ngModel]="usuario?.email" type="email" name="email" [disabled]="usuario?.google" class="form-control" placeholder="E-mail">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Gravar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Foto do Usuário</h4>
+        <h6 class="card-subtitle">perfil</h6>
+        <hr>
+
+        <div class="u-img">
+          <img *ngIf="!imagenTemp" [src]="usuario?.img | imagen" style="margin-bottom: 15px;" class="w150">
+          <img *ngIf="imagenTemp" [src]="imagenTemp" style="margin-bottom: 15px;" class="w150">
+        </div>
+
+        <input (change)="selectImage($event.target.files[0])" type="file">
+
+        <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" style="margin-top: 13px;" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+          <i class="fa fa-save"></i>
+          Atualizar foto
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

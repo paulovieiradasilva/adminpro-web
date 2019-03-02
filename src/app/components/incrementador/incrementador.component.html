@@ -1,0 +1,10 @@
+<h3>{{ label }}</h3>
+<div class="input-group">
+    <span class="input-group-btn">
+        <button (click)="cambiarValor(-5)" class="btn btn-primary" type="button"><i class="mdi mdi-minus"></i></button>
+    </span>
+    <input #txtPercentage (ngModelChange)="onChanges($event)" type="number" class="form-control" max="100" min="0" name="percentage" [(ngModel)]="percentage">
+    <span class="input-group-btn">
+        <button (click)="cambiarValor(+5)" class="btn btn-primary" type="button"><i class="mdi mdi-plus"></i></button>
+    </span>
+</div>
